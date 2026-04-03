@@ -1,0 +1,77 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.comment-form {
+  background: $white;
+  padding: $spacing-lg;
+  border-radius: $border-radius-md;
+  margin: $spacing-lg 0;
+  
+  h4 {
+    margin-bottom: $spacing-md;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .form-group {
+    margin-bottom: $spacing-md;
+    
+    label {
+      display: block;
+      margin-bottom: $spacing-sm;
+      font-weight: 500;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: $spacing-sm;
+      border: 1px solid $border-color;
+      border-radius: $border-radius-sm;
+      font-family: inherit;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+      }
+    }
+  }
+  
+  .errors {
+    background: #fee;
+    color: $error-color;
+    padding: $spacing-md;
+    border-radius: $border-radius-sm;
+    margin-bottom: $spacing-md;
+    
+    p {
+      margin: 0;
+      font-size: $font-size-sm;
+    }
+  }
+  
+  .submit-btn {
+    background: $primary-color;
+    color: $white;
+    padding: $spacing-sm $spacing-lg;
+    border: none;
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    
+    &:hover:not(:disabled) {
+      background: darken($primary-color, 10%);
+    }
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}

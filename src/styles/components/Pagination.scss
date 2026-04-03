@@ -1,0 +1,33 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.pagination {
+  @include flex-center;
+  gap: $spacing-md;
+  margin-top: $spacing-xl;
+  padding: $spacing-lg 0;
+  
+  .page-btn {
+    background: $white;
+    border: 1px solid $border-color;
+    padding: $spacing-sm $spacing-lg;
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    transition: all 0.3s;
+    
+    &:hover:not(:disabled) {
+      background: $primary-color;
+      color: $white;
+      border-color: $primary-color;
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  
+  .page-info {
+    color: $text-light;
+  }
+}

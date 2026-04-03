@@ -1,27 +1,16 @@
 import axios from 'axios'
 
-interface LoginResponse {
-  token?: string
-  accessToken?: string
-  user?: {
-    username: string
-    id?: number
-  }
-}
-
-export const login = async (login: string, password: string): Promise<{ success: boolean; data?: LoginResponse; error?: string }> => {
+export const login = async (username: string, password: string) => {
   try {
-    const response = await axios.post<LoginResponse>(
-      `/auth-api/login?login=${encodeURIComponent(login)}&password=${encodeURIComponent(password)}`,
-      {},
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }
+    const response = await axios({
+      method: 'POST',
+      url: `/auth-api/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+      headers: {
+        'Content-Type': 'application/json'
       }
-    )
+    })
     
-    console.log('Login response:', response.data)
+    console.log('Login response:', response.status, response.data)
     
     const token = response.data?.token || response.data?.accessToken
     if (token) {
@@ -29,16 +18,20 @@ export const login = async (login: string, password: string): Promise<{ success:
       return { success: true, data: response.data }
     }
     
-    return { success: true, data: response.data }
+    if (response.status === 200) {
+      return { success: true, data: response.data }
+    }
+    
+    return { success: false, error: 'Токен не получен' }
   } catch (error: any) {
-    console.error('Login error:', error.response?.data || error.message)
+    console.error('Login error:', error.response?.status, error.response?.data)
     return { 
       success: false, 
-      error: error.response?.data?.message || 'Ошибка авторизации' 
+      error: error.response?.data?.message || 'Ошибка авторизации'
     }
   }
 }
 
-export const logout = (): void => {
+export const logout = () => {
   localStorage.removeItem('auth_token')
 }

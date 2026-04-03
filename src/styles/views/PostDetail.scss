@@ -1,0 +1,122 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.post-detail {
+  min-height: 100vh;
+//   background: $background-light;
+  padding: $spacing-lg 0;
+  
+  .back-btn {
+    background: none;
+    border: none;
+    color: $primary-color;
+    cursor: pointer;
+    font-size: $font-size-md;
+    margin-bottom: $spacing-lg;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  .loading {
+    text-align: center;
+    padding: $spacing-2xl;
+  }
+  
+  .post-content {
+    @include card;
+    
+    .post-header {
+      margin-bottom: $spacing-lg;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: $spacing-md;
+      
+      h1 {
+        font-size: $font-size-2xl;
+        margin-bottom: $spacing-md;
+      }
+      
+      .post-meta {
+        display: flex;
+        gap: $spacing-lg;
+        color: $text-light;
+        
+        .author {
+          color: $primary-color;
+          text-decoration: none;
+          
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    
+    .post-body {
+      margin-bottom: $spacing-xl;
+      
+      .brief {
+        font-size: $font-size-lg;
+        color: $text-color;
+        margin-bottom: $spacing-md;
+        font-weight: 500;
+      }
+      
+      .full {
+        color: $text-light;
+        line-height: 1.6;
+      }
+    }
+    
+    .comments-section {
+      h3 {
+        margin-bottom: $spacing-lg;
+      }
+      
+      .no-comments {
+        text-align: center;
+        color: $text-light;
+        padding: $spacing-xl;
+      }
+      
+      .comments-list {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+        margin-top: $spacing-lg;
+        
+        .comment-card {
+          background: $background-light;
+          padding: $spacing-md;
+          border-radius: $border-radius-sm;
+          
+          .comment-header {
+            display: flex;
+            gap: $spacing-md;
+            margin-bottom: $spacing-sm;
+            font-size: $font-size-sm;
+            
+            strong {
+              color: $text-color;
+            }
+            
+            .comment-email {
+              color: $text-light;
+            }
+            
+            .comment-date {
+              color: $text-light;
+              margin-left: auto;
+            }
+          }
+          
+          .comment-text {
+            color: $text-color;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  background: $background-light;
+  color: $text-color;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  
+  @include mobile {
+    padding: 0 $spacing-md;
+  }
+}
+
+.login-container,
+.home,
+.user-blog,
+.post-detail {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+.login-container::before {
+  background-image: url('@/assets/images/1.png');
+}
+
+.home::before {
+  background-image: url('@/assets/images/2.png');
+}
+
+.user-blog::before {
+  background-image: url('@/assets/images/3.png');
+}
+
+.post-detail::before {
+  background-image: url('@/assets/images/4.png');
+}

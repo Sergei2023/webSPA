@@ -1,0 +1,182 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.user-blog {
+  min-height: 100vh;
+//   background: $background-light;
+  padding: $spacing-lg 0;
+  
+  .blog-header {
+    @include flex-between;
+    margin-bottom: $spacing-lg;
+    
+    .back-btn {
+      background: none;
+      border: none;
+      color: $primary-color;
+      cursor: pointer;
+      font-size: $font-size-md;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    
+    .header-actions {
+      display: flex;
+      gap: $spacing-md;
+      
+      .user-name {
+        color: $text-light;
+      }
+      
+      .logout-btn {
+        background: $error-color;
+        color: $white;
+        padding: $spacing-sm $spacing-lg;
+        border: none;
+        border-radius: $border-radius-sm;
+        cursor: pointer;
+        
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+  
+  .blog-info {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    padding-bottom: $spacing-lg;
+    border-bottom: 1px solid $border-color;
+    
+    h1 {
+      font-size: $font-size-2xl;
+      color: $text-color;
+      margin-bottom: $spacing-sm;
+    }
+    
+    .full-name {
+      color: $text-light;
+    }
+  }
+  
+  .add-post-section {
+    @include card;
+    margin-bottom: $spacing-xl;
+    
+    h3 {
+      margin-bottom: $spacing-lg;
+      color: $text-color;
+    }
+  }
+  
+  .loading {
+    text-align: center;
+    padding: $spacing-2xl;
+  }
+  
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+  
+  .post-card {
+    @include card;
+    
+    .post-header {
+      @include flex-between;
+      margin-bottom: $spacing-md;
+      
+      .post-date {
+        color: $text-light;
+        font-size: $font-size-sm;
+      }
+      
+      .post-actions {
+        display: flex;
+        gap: $spacing-sm;
+        
+        .edit-btn, .delete-btn {
+          padding: $spacing-xs $spacing-md;
+          border: none;
+          border-radius: $border-radius-sm;
+          cursor: pointer;
+          font-size: $font-size-sm;
+        }
+        
+        .edit-btn {
+          background: $primary-color;
+          color: $white;
+          
+          &:hover {
+            background: darken($primary-color, 10%);
+          }
+        }
+        
+        .delete-btn {
+          background: $error-color;
+          color: $white;
+          
+          &:hover {
+            background: darken($error-color, 10%);
+          }
+        }
+      }
+    }
+    
+    .post-link {
+      text-decoration: none;
+      color: inherit;
+      
+      .post-title {
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-sm;
+        color: $text-color;
+      }
+      
+      .post-brief {
+        color: $text-light;
+        line-height: 1.5;
+      }
+    }
+    
+    .post-footer {
+      margin-top: $spacing-md;
+      padding-top: $spacing-md;
+      border-top: 1px solid $border-color;
+      
+      .comments-count {
+        color: $text-light;
+        font-size: $font-size-sm;
+      }
+    }
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    @include flex-center;
+    z-index: 1000;
+    
+    .modal-content {
+      background: $white;
+      border-radius: $border-radius-lg;
+      padding: $spacing-xl;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      
+      h3 {
+        margin-bottom: $spacing-lg;
+      }
+    }
+  }
+}

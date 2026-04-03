@@ -1,0 +1,77 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.post-form {
+  .form-group {
+    margin-bottom: $spacing-md;
+    
+    label {
+      display: block;
+      margin-bottom: $spacing-sm;
+      font-weight: 500;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: $spacing-sm;
+      border: 1px solid $border-color;
+      border-radius: $border-radius-sm;
+      font-family: inherit;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+      }
+    }
+  }
+  
+  .errors {
+    background: #fee;
+    color: $error-color;
+    padding: $spacing-md;
+    border-radius: $border-radius-sm;
+    margin-bottom: $spacing-md;
+    
+    p {
+      margin: 0;
+      font-size: $font-size-sm;
+    }
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: $spacing-md;
+    justify-content: flex-end;
+    
+    .submit-btn {
+      background: $primary-color;
+      color: $white;
+      padding: $spacing-sm $spacing-lg;
+      border: none;
+      border-radius: $border-radius-sm;
+      cursor: pointer;
+      
+      &:hover:not(:disabled) {
+        background: darken($primary-color, 10%);
+      }
+      
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+    
+    .cancel-btn {
+      background: $text-light;
+      color: $white;
+      padding: $spacing-sm $spacing-lg;
+      border: none;
+      border-radius: $border-radius-sm;
+      cursor: pointer;
+      
+      &:hover {
+        background: darken($text-light, 10%);
+      }
+    }
+  }
+}
